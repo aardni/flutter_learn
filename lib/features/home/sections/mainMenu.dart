@@ -23,7 +23,7 @@ class MainMenu extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: getProportionateScreenHeight(30),
+              height: getProportionateScreenHeight(20),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -33,7 +33,10 @@ class MainMenu extends StatelessWidget {
                 CircleButton(Icons.wallet, "Buy"),
                 CircleButton(Icons.swap_horiz_outlined, "Swap"),
               ],
-            )
+            ),
+            SizedBox(
+              height: getProportionateScreenHeight(20),
+            ),
           ],
         ));
   }
