@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learn/data/tokens.dart';
 import 'package:flutter_learn/features/home/sections/mainMenu.dart';
+import 'package:flutter_learn/features/home/sections/tab_bar.dart';
 import 'package:flutter_learn/features/size_config.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,11 +20,11 @@ class _HomePageState extends State<HomePage>
     _tabController = TabController(length: 2, vsync: this);
   }
 
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _tabController.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +57,7 @@ class _HomePageState extends State<HomePage>
         headerSliverBuilder: (context, innerBoxIsScrolled) => <Widget>[
           SliverAppBar(
             backgroundColor: Colors.white,
-            pinned: true,
+            pinned: false,
             floating: true,
             elevation: 0,
             expandedHeight: getProportionateScreenHeight(210),
@@ -94,26 +96,8 @@ class _HomePageState extends State<HomePage>
             pinned: true,
           ),
         ],
-        body: TabBarView(
-          controller: _tabController,
-          children: <Widget>[
-            ListView.builder(
-              itemCount: 10,
-              itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  title: Text('Item $index'),
-                );
-              },
-            ),
-            ListView.builder(
-              itemCount: 10,
-              itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  title: Text('Comment $index'),
-                );
-              },
-            ),
-          ],
+        body: HomeTabBar(
+          tabController: _tabController,
         ),
       ),
     );

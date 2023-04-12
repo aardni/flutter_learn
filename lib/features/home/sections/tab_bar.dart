@@ -1,28 +1,63 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learn/data/tokens.dart';
 
-class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-  _SliverAppBarDelegate(this._tabBar);
+class HomeTabBar extends StatefulWidget {
+  const HomeTabBar({super.key, required TabController tabController})
+      : _tabController = tabController;
 
-  final TabBar _tabBar;
-
-  @override
-  double get minExtent => _tabBar.preferredSize.height;
-  @override
-  double get maxExtent => _tabBar.preferredSize.height;
+  final TabController _tabController;
 
   @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return Container(
-      decoration: const BoxDecoration(
-        color: Colors.white,
-      ),
-      child: _tabBar,
+  State<HomeTabBar> createState() => _HomeTabBarState();
+}
+
+class _HomeTabBarState extends State<HomeTabBar> {
+  late Tokens tokens;
+  @override
+  Widget build(BuildContext context) {
+    return TabBarView(
+      controller: widget._tabController,
+      children: <Widget>[
+        ListView.builder(
+          itemCount: allTokens.length,
+          itemBuilder: (context, index) {
+            return ListToken(
+              tokens: allTokens[index],
+            );
+          },
+        ),
+        ListView.builder(
+          itemCount: 10,
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+              title: Text('NFTs $index'),
+            );
+          },
+        ),
+      ],
     );
   }
+}
 
+class ListToken extends StatelessWidget {
+  const ListToken({
+    required this.tokens,
+    super.key,
+  });
+  final Tokens tokens;
   @override
-  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
-    return false;
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: CircleAvatar(
+        backgroundImage: AssetImage("${tokens.image}"),
+        radius: 25,
+        foregroundColor: Colors.grey[300],
+        backgroundColor: Colors.grey[300],
+      ),
+      // Image(image: AssetImage("${tokens.image}")),
+      title: Text("${tokens.name}"),
+      subtitle: const Text("\$325.33"),
+      trailing: Text("${tokens.amount}"),
+    );
   }
 }

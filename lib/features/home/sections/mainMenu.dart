@@ -34,9 +34,6 @@ class MainMenu extends StatelessWidget {
                 CircleButton(Icons.swap_horiz_outlined, "Swap"),
               ],
             ),
-            SizedBox(
-              height: getProportionateScreenHeight(20),
-            ),
           ],
         ));
   }
