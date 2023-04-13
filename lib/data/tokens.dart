@@ -14,17 +14,23 @@ final List<Tokens> allTokens = [
       image: "assets/crypto/bnb_light.png",
       money: "325.23",
       amount: "0",
-      percentage: "3.76%"),
+      percentage: "3.76"),
+  Tokens(
+      name: "BTC",
+      image: "assets/crypto/bitcoin.png",
+      money: "30,470.53",
+      amount: "0",
+      percentage: "1.71"),
+  Tokens(
+      name: "ETH",
+      image: "assets/crypto/eth.png",
+      money: "2,001.16",
+      amount: "0",
+      percentage: "4.67"),
   Tokens(
       name: "BNB",
-      image: "assets/crypto/bnb_light.png",
+      image: "assets/crypto/bnb.png",
       money: "325.23",
       amount: "0",
-      percentage: "3.76%"),
-  Tokens(
-      name: "BNB",
-      image: "assets/crypto/bnb_light.png",
-      money: "325.23",
-      amount: "0",
-      percentage: "3.76%"),
+      percentage: "3.76"),
 ];
